@@ -7,10 +7,17 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
-
-    let sectionTitles: [String] = ["breakfast", "lunch", "dinner"]
+enum Sections: Int {
+    case breakfast = 0
+    case Main = 1
+    case Dessert = 2
     
+}
+
+class HomeViewController: UIViewController {    
+    
+    
+    let sectionTitles: [String] = ["breakfast", "Main Dish", "Dessert"]
     
     private let homeFeedTable: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
@@ -32,6 +39,7 @@ class HomeViewController: UIViewController {
         
         let headerView = FoodHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
         homeFeedTable.tableHeaderView = headerView
+        
         
     }
     
@@ -60,6 +68,7 @@ class HomeViewController: UIViewController {
     }
 }
 
+
 extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -74,6 +83,52 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.identifier, for: indexPath) as? CollectionViewTableViewCell else {
             return UITableViewCell()
         }
+      
+        
+        
+        
+        switch indexPath.section {
+        case Sections.breakfast.rawValue:
+            
+            APICaller.shared.getBreakfast { result in
+                switch result {
+                case .success(let response):
+                    cell.configure(with: response)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+            
+        case Sections.Main.rawValue:
+            APICaller.shared.getMain { result in
+                switch result {
+                case .success(let response):
+                    cell.configure(with: response)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+            
+        case Sections.Dessert.rawValue:
+            APICaller.shared.getDessart { result in
+                switch result {
+                case .success(let response):
+                    cell.configure(with: response)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+            
+            
+        default:
+            return UITableViewCell()
+        }
+               
+        
+        
+        
+        
+        //OVER IT TRY
         return cell
         
         
