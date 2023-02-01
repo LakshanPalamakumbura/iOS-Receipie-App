@@ -41,6 +41,10 @@ class HomeViewController: UIViewController {
         homeFeedTable.tableHeaderView = headerView
         
         
+//        APICaller.shared.getDetail { Result in
+//            //
+//        }
+//        navigationController?.pushViewController(TitlePreviewViewController(), animated: true)
     }
     
     private func configureNavBar() {
@@ -55,12 +59,25 @@ class HomeViewController: UIViewController {
         
         
         navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(image: UIImage(systemName: "person"), style: .done, target: self, action: nil),
+            UIBarButtonItem(image: UIImage(systemName: "person"), style: .done, target: self, action: #selector(presentLoginVC)),
             UIBarButtonItem(image: UIImage(systemName: "play.rectangle"), style: .done, target: self, action: nil)
         ]
         navigationController?.navigationBar.tintColor = .blue
         
     }
+    
+    @objc func presentLoginVC() {
+        
+        let vc = loginUiViewController()
+        vc.view.backgroundColor = .systemBackground
+        navigationController?.pushViewController(vc, animated: true)
+//        present(loginUiViewController(), animated: true)
+         }
+    
+    @objc func presentLogoutVC() {
+        UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
+         }
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -84,7 +101,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
       
-        
+        cell.delegate = self
         
         
         switch indexPath.section {
@@ -169,4 +186,19 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
 
+}
+
+
+
+
+extension HomeViewController: CollectionViewTableViewCellDelegate {
+    func CollectionViewTableViewCellDidTapCell(_cell: CollectionViewTableViewCell, viewModel: TitlePreviewViewModel) {
+        DispatchQueue.main.async { [weak self] in
+            let vc = TitlePreviewViewController()
+    //        vc.delegate = self
+            vc.configure(with: viewModel)
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
+      
+    }
 }

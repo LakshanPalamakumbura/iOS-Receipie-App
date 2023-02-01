@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol CollectionViewTableViewCellDelegate: AnyObject {
+    func CollectionViewTableViewCellDidTapCell(_cell: CollectionViewTableViewCell, viewModel: TitlePreviewViewModel)
+}
+
 class CollectionViewTableViewCell: UITableViewCell {
 
     static let identifier = "CollectionViewTableViewCell"
+    
+    weak var delegate: CollectionViewTableViewCellDelegate?
     
     private var responses: [Response] = [Response]()
 
@@ -83,5 +89,33 @@ extension CollectionViewTableViewCell:  UICollectionViewDelegate, UICollectionVi
     }
 
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        let responses = responses[indexPath.row]
+        let foodName = responses.name
+        let foodIngredients = responses.ingredients
+        let foodStatus = responses.status
+        guard let foodImage = responses.image else { return  }
+//        guard let titleName = responses.name ?? responses.ingredients else {
+//            return
+//        }
+        APICaller.shared.getDetail { [weak self] result in
+            switch result {
+            case .success(let response):
+                guard let strongSelf = self else {
+                    return
+                }
+                let viewModel = TitlePreviewViewModel(name: foodName, ingredients: foodIngredients, status: foodStatus, image: foodImage)
+                self?.delegate?.CollectionViewTableViewCellDidTapCell(_cell: strongSelf, viewModel: viewModel)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+
+        
+    }
+    
+    
 
 }

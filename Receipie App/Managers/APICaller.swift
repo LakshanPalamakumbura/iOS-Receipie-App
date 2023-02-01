@@ -119,6 +119,29 @@ class APICaller {
          task.resume()
      }
 
+    func getDetail(completion: @escaping (Result<[Response], Error>)->Void){
+         guard let url = URL(string: "http://127.0.0.1:8000/api/food")else {return}
+
+         let task = URLSession.shared.dataTask(with: URLRequest(url: url)){data, _, error in
+             guard let data = data, error == nil else {
+                 return
+                 }
+             do {
+                 let results = try JSONDecoder().decode([Response].self, from: data)
+//                 print(results)
+//                 print(results[0].name)
+
+//                 for i in 0..<2 {
+//                     print(results[i].name)
+//                 }
+                 completion(.success(results))
+             }catch{
+                 completion(.failure(error))
+             }
+         }
+         task.resume()
+     }
+
 
     
 }
