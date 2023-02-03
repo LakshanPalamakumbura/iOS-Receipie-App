@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B071EFE5298D310F00C068A2 /* FavouriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B071EFE4298D310F00C068A2 /* FavouriteTableViewCell.swift */; };
+		B071EFE9298D393700C068A2 /* FavouriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B071EFE8298D393700C068A2 /* FavouriteViewModel.swift */; };
 		B089369C2988554E00DF554E /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B089369B2988554E00DF554E /* UITextField+Extension.swift */; };
-		B089369E2988563800DF554E /* loginUiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B089369D2988563800DF554E /* loginUiView.swift */; };
 		B08936A02988564300DF554E /* loginUiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B089369F2988564300DF554E /* loginUiViewController.swift */; };
 		B0896A3029864ACD0036F4A6 /* ResponseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0896A2F29864ACD0036F4A6 /* ResponseCollectionViewCell.swift */; };
 		B0896A33298650880036F4A6 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B0896A32298650880036F4A6 /* SDWebImage */; };
@@ -27,13 +28,16 @@
 		B0A6E8AC2949988B006D94D7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6E8AB2949988B006D94D7 /* SearchViewController.swift */; };
 		B0A6E8AE294998AA006D94D7 /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6E8AD294998AA006D94D7 /* DownloadsViewController.swift */; };
 		B0A6E8B029499A31006D94D7 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A6E8AF29499A31006D94D7 /* MainTabBarViewController.swift */; };
+		B0AC2077298AE85400C75E3B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AC2076298AE85400C75E3B /* User.swift */; };
+		B0C64947298C205E006302BD /* registerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C64946298C205E006302BD /* registerViewController.swift */; };
 		B0E8E8D829843F3C0019F43F /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E8E8D729843F3C0019F43F /* APICaller.swift */; };
 		B0E8E8DC2984475B0019F43F /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E8E8DB2984475B0019F43F /* Food.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B071EFE4298D310F00C068A2 /* FavouriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteTableViewCell.swift; sourceTree = "<group>"; };
+		B071EFE8298D393700C068A2 /* FavouriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewModel.swift; sourceTree = "<group>"; };
 		B089369B2988554E00DF554E /* UITextField+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
-		B089369D2988563800DF554E /* loginUiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginUiView.swift; sourceTree = "<group>"; };
 		B089369F2988564300DF554E /* loginUiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginUiViewController.swift; sourceTree = "<group>"; };
 		B0896A2F29864ACD0036F4A6 /* ResponseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCollectionViewCell.swift; sourceTree = "<group>"; };
 		B08D51282988F28B00CDED78 /* TitlePreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitlePreviewViewController.swift; sourceTree = "<group>"; };
@@ -52,6 +56,8 @@
 		B0A6E8AB2949988B006D94D7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		B0A6E8AD294998AA006D94D7 /* DownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
 		B0A6E8AF29499A31006D94D7 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		B0AC2076298AE85400C75E3B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B0C64946298C205E006302BD /* registerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = registerViewController.swift; sourceTree = "<group>"; };
 		B0E8E8D729843F3C0019F43F /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		B0E8E8DB2984475B0019F43F /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,8 +78,8 @@
 		B089369A2988547100DF554E /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				B0C64946298C205E006302BD /* registerViewController.swift */,
 				B089369F2988564300DF554E /* loginUiViewController.swift */,
-				B089369D2988563800DF554E /* loginUiView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -142,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				B0E8E8DB2984475B0019F43F /* Food.swift */,
+				B0AC2076298AE85400C75E3B /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -149,6 +156,7 @@
 		B0A6E8A02949946A006D94D7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B071EFE4298D310F00C068A2 /* FavouriteTableViewCell.swift */,
 				B0A6E8A1294994F5006D94D7 /* CollectionViewTableViewCell.swift */,
 				B0A6E8A5294995A1006D94D7 /* FoodHeaderUIView.swift */,
 				B0896A2F29864ACD0036F4A6 /* ResponseCollectionViewCell.swift */,
@@ -160,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				B08D512A2988F68100CDED78 /* TitlePreviewViewModel.swift */,
+				B071EFE8298D393700C068A2 /* FavouriteViewModel.swift */,
 			);
 			path = ViewModeles;
 			sourceTree = "<group>";
@@ -258,6 +267,7 @@
 				B0E8E8DC2984475B0019F43F /* Food.swift in Sources */,
 				B0A6E8A6294995A1006D94D7 /* FoodHeaderUIView.swift in Sources */,
 				B0896A3029864ACD0036F4A6 /* ResponseCollectionViewCell.swift in Sources */,
+				B071EFE5298D310F00C068A2 /* FavouriteTableViewCell.swift in Sources */,
 				B0A6E8AC2949988B006D94D7 /* SearchViewController.swift in Sources */,
 				B0A6E88A29499373006D94D7 /* AppDelegate.swift in Sources */,
 				B0E8E8D829843F3C0019F43F /* APICaller.swift in Sources */,
@@ -269,7 +279,9 @@
 				B089369C2988554E00DF554E /* UITextField+Extension.swift in Sources */,
 				B0A6E8AA29499852006D94D7 /* UpcomingViewController.swift in Sources */,
 				B08D51292988F28B00CDED78 /* TitlePreviewViewController.swift in Sources */,
-				B089369E2988563800DF554E /* loginUiView.swift in Sources */,
+				B0C64947298C205E006302BD /* registerViewController.swift in Sources */,
+				B071EFE9298D393700C068A2 /* FavouriteViewModel.swift in Sources */,
+				B0AC2077298AE85400C75E3B /* User.swift in Sources */,
 				B08936A02988564300DF554E /* loginUiViewController.swift in Sources */,
 				B0A6E8A8294997E9006D94D7 /* HomeViewController.swift in Sources */,
 			);

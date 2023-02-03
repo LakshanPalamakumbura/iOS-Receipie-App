@@ -18,36 +18,6 @@ class APICaller {
     
     static let shared = APICaller()
     
-//    func getBreakfast(completion: @escaping (Result<[Response], Error>) -> Void) {
-//
-//        guard let url = URL(string: "http://127.0.0.1:8000/api/food") else {return}
-//
-//        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, error in guard let data = data, error == nil else{
-//                return
-//            }
-//
-//            do {
-////                let results = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
-////                print(results)
-//
-////                let results = try JSONDecoder().decode([Response].self, from: data)
-////                completion(.success(results))
-//
-////                print(results)
-//                let results = try JSONDecoder().decode(Response.self, from: data)
-//                print(results)
-////                completion(.success(results.data))
-//
-//            } catch {
-//                completion(.failure(APIError.failedTogetData))
-//
-////                print(error.localizedDescription)
-//            }
-//
-//        }
-//        task.resume()
-//    }
-    
     func getBreakfast(completion: @escaping (Result<[Response], Error>)->Void){
          guard let url = URL(string: "http://127.0.0.1:8000/api/food")else {return}
          
@@ -57,13 +27,8 @@ class APICaller {
                  }
              do {
                  let results = try JSONDecoder().decode([Response].self, from: data)
-//                 print(results)
-//                 print(results[0].name)
-                 
-//                 for i in 0..<results.count {
-//                     print(results[i].name)
-//                 }
-                 completion(.success(results))
+                 let breakfast = Array(results.prefix(5))
+                 completion(.success(breakfast))
              }catch{
                  completion(.failure(error))
              }
@@ -80,14 +45,9 @@ class APICaller {
                  }
              do {
                  let results = try JSONDecoder().decode([Response].self, from: data)
-//                 print(results)
-//                 print(results[0].name)
-
-//                 for i in 0..<results.count {
-//                     print(results[i].name)
-//                 }
-                
-                 completion(.success(results))
+                 let main = Array(results.suffix(8))
+                 let mainDish = Array(main.prefix(5))
+                 completion(.success(mainDish))
                                 
              }catch{
                  completion(.failure(error))
@@ -105,13 +65,8 @@ class APICaller {
                  }
              do {
                  let results = try JSONDecoder().decode([Response].self, from: data)
-//                 print(results)
-//                 print(results[0].name)
-
-//                 for i in 0..<results.count {
-//                     print(results[i].name)
-//                 }
-                 completion(.success(results))
+                 let desert = Array(results.suffix(3))
+                 completion(.success(desert))
              }catch{
                  completion(.failure(error))
              }
@@ -141,9 +96,27 @@ class APICaller {
          }
          task.resume()
      }
-
-
     
+
+    func getFavourite(completion: @escaping (Result<[Response], Error>)->Void){
+         guard let url = URL(string: "http://127.0.0.1:8000/api/userfavourite")else {return}
+
+         let task = URLSession.shared.dataTask(with: URLRequest(url: url)){data, _, error in
+             guard let data = data, error == nil else {
+                 return
+                 }
+             do {
+                 let results = try JSONDecoder().decode([Response].self, from: data)
+                 let main = Array(results.suffix(8))
+                 let mainDish = Array(main.prefix(5))
+                 completion(.success(mainDish))
+                                
+             }catch{
+                 completion(.failure(error))
+             }
+         }
+         task.resume()
+     }
 }
 
 

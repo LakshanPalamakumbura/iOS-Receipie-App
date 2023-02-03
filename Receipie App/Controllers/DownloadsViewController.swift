@@ -9,39 +9,89 @@ import UIKit
 
 class DownloadsViewController: UIViewController {
 
-    let titleLable = UILabel()//add for testing
+    private var responses: [Response] = [Response]()
+    private let upcomingTable: UITableView = {
+        
+        let table = UITableView()
+        table.register(FavouriteTableViewCell.self, forCellReuseIdentifier: FavouriteTableViewCell.identifier)
+        return table
+        
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemRed
-        configureTitleLabel()//add for testing
-        // Do any additional setup after loading the view.
+        view.addSubview(upcomingTable)
+        upcomingTable.delegate = self
+        upcomingTable.dataSource = self
     }
     
-    func configureTitleLabel(){
-        view.addSubview(titleLable)
-        titleLable.translatesAutoresizingMaskIntoConstraints = false
-        titleLable.text = "This shows your food"
-        titleLable.font = .systemFont(ofSize: 40, weight: .bold)
-        titleLable.textColor = .red
-        titleLable.textAlignment = .center
-        titleLable.numberOfLines = 0
-
-        NSLayoutConstraint.activate([
-            titleLable.widthAnchor.constraint(equalToConstant: 250),
-            titleLable.heightAnchor.constraint(equalToConstant: 350),
-            titleLable.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLable.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -75)
-            
-        ])
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        upcomingTable.frame = view.bounds
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func fetchUpComing() {
+        let token = UserDefaults.standard.string(forKey: "token")
+                  if (token == nil) {
+                      let loginViewController = loginUiViewController()
+                      present(loginViewController, animated: true, completion: nil)
+        
+                  }else{ //use get API
+                      APICaller.shared.getFavourite { [weak self] result in
+                          switch result {
+                          case .success(let responses):
+                              self?.responses = responses
+                              DispatchQueue.main.async {
+                                  self?.upcomingTable.reloadData()
+                              }
+                              
+                          case .failure(let error):
+                              print(error.localizedDescription)
+                          }
+                          
+                      }
+                  }
     }
-    */
 
+    
+ 
+    //    let token = UserDefaults.standard.string(forKey: "token")
+    //          if (token == nil) {
+    //              let loginViewController = LoginViewController()
+    //              present(loginViewController, animated: true, completion: nil)
+    //
+    //          }else{
+    //
+    //              //get favourites
+    //
+    //
+    //          }
+    
+}
+
+
+extension DownloadsViewController: UITableViewDelegate, UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return responses.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//            let cell =  tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+//            cell.textLabel?.text = titles[indexPath.row].original_name ?? titles[indexPath.row].original_title ?? "Unknown"
+//            return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: FavouriteTableViewCell.identifier, for: indexPath) as? FavouriteTableViewCell else {
+            return UITableViewCell()
+        }
+        let responses = responses[indexPath.row]
+        let foodName = responses.name
+//        guard let foodImage = responses.image else { return } //else { return  }
+//        let viewModel = FavouriteViewModel(name: foodName)
+        return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 140
+    }
 }

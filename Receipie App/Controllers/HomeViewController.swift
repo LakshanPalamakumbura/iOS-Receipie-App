@@ -16,6 +16,7 @@ enum Sections: Int {
 
 class HomeViewController: UIViewController {    
     
+//    static let identifier = "HomeViewController"
     
     let sectionTitles: [String] = ["breakfast", "Main Dish", "Dessert"]
     
