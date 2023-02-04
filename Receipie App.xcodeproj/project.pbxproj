@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B071EFE5298D310F00C068A2 /* FavouriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B071EFE4298D310F00C068A2 /* FavouriteTableViewCell.swift */; };
 		B071EFE9298D393700C068A2 /* FavouriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B071EFE8298D393700C068A2 /* FavouriteViewModel.swift */; };
+		B07FDE29298ED81C00844F78 /* FavouriteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07FDE28298ED81C00844F78 /* FavouriteResponse.swift */; };
 		B089369C2988554E00DF554E /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B089369B2988554E00DF554E /* UITextField+Extension.swift */; };
 		B08936A02988564300DF554E /* loginUiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B089369F2988564300DF554E /* loginUiViewController.swift */; };
 		B0896A3029864ACD0036F4A6 /* ResponseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0896A2F29864ACD0036F4A6 /* ResponseCollectionViewCell.swift */; };
@@ -37,6 +38,7 @@
 /* Begin PBXFileReference section */
 		B071EFE4298D310F00C068A2 /* FavouriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteTableViewCell.swift; sourceTree = "<group>"; };
 		B071EFE8298D393700C068A2 /* FavouriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewModel.swift; sourceTree = "<group>"; };
+		B07FDE28298ED81C00844F78 /* FavouriteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteResponse.swift; sourceTree = "<group>"; };
 		B089369B2988554E00DF554E /* UITextField+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		B089369F2988564300DF554E /* loginUiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginUiViewController.swift; sourceTree = "<group>"; };
 		B0896A2F29864ACD0036F4A6 /* ResponseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			children = (
 				B0E8E8DB2984475B0019F43F /* Food.swift */,
 				B0AC2076298AE85400C75E3B /* User.swift */,
+				B07FDE28298ED81C00844F78 /* FavouriteResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				B0A6E8AE294998AA006D94D7 /* DownloadsViewController.swift in Sources */,
 				B0A6E88C29499373006D94D7 /* SceneDelegate.swift in Sources */,
 				B089369C2988554E00DF554E /* UITextField+Extension.swift in Sources */,
+				B07FDE29298ED81C00844F78 /* FavouriteResponse.swift in Sources */,
 				B0A6E8AA29499852006D94D7 /* UpcomingViewController.swift in Sources */,
 				B08D51292988F28B00CDED78 /* TitlePreviewViewController.swift in Sources */,
 				B0C64947298C205E006302BD /* registerViewController.swift in Sources */,

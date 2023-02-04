@@ -9,7 +9,7 @@ import UIKit
 
 class DownloadsViewController: UIViewController {
 
-    private var responses: [Response] = [Response]()
+    private var responses: [FavouriteResponse] = [FavouriteResponse]()
     private let upcomingTable: UITableView = {
         
         let table = UITableView()
@@ -20,16 +20,16 @@ class DownloadsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "save"
         view.backgroundColor = .systemRed
         view.addSubview(upcomingTable)
         upcomingTable.delegate = self
         upcomingTable.dataSource = self
+        
+        
+        fetchUpComing()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        upcomingTable.frame = view.bounds
-    }
     private func fetchUpComing() {
         let token = UserDefaults.standard.string(forKey: "token")
                   if (token == nil) {
@@ -51,22 +51,12 @@ class DownloadsViewController: UIViewController {
                           
                       }
                   }
+    }    
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        upcomingTable.frame = view.bounds
     }
-
-    
- 
-    //    let token = UserDefaults.standard.string(forKey: "token")
-    //          if (token == nil) {
-    //              let loginViewController = LoginViewController()
-    //              present(loginViewController, animated: true, completion: nil)
-    //
-    //          }else{
-    //
-    //              //get favourites
-    //
-    //
-    //          }
-    
 }
 
 
@@ -83,10 +73,9 @@ extension DownloadsViewController: UITableViewDelegate, UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: FavouriteTableViewCell.identifier, for: indexPath) as? FavouriteTableViewCell else {
             return UITableViewCell()
         }
-        let responses = responses[indexPath.row]
-        let foodName = responses.name
-//        guard let foodImage = responses.image else { return } //else { return  }
-//        let viewModel = FavouriteViewModel(name: foodName)
+        let responses = responses[indexPath.row].food
+//        let foodName = responses.name
+        cell.configure(with: FavouriteViewModel(name: responses.name ?? "Unknown Title Name", image: responses.image ?? ""))
         return cell
         
     }

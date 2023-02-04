@@ -42,7 +42,7 @@ class HomeViewController: UIViewController {
         homeFeedTable.tableHeaderView = headerView
         
         
-//        APICaller.shared.getDetail { Result in
+//        APICaller.shared.getFavourite { Result in
 //            //
 //        }
 //        navigationController?.pushViewController(TitlePreviewViewController(), animated: true)
@@ -70,6 +70,7 @@ class HomeViewController: UIViewController {
     @objc func presentLoginVC() {
         
         let vc = loginUiViewController()
+        vc.nav = self.navigationController
         vc.view.backgroundColor = .systemBackground
         navigationController?.pushViewController(vc, animated: true)
 //        present(loginUiViewController(), animated: true)

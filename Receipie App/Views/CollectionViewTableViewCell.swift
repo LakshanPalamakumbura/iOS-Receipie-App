@@ -18,8 +18,6 @@ class CollectionViewTableViewCell: UITableViewCell {
     weak var delegate: CollectionViewTableViewCellDelegate?
     
     private var responses: [Response] = [Response]()
-
-//    private var responses: [Response] = []()
     
     private let collectionView: UICollectionView = {
 
@@ -96,6 +94,7 @@ extension CollectionViewTableViewCell:  UICollectionViewDelegate, UICollectionVi
         let foodName = responses.name
         let foodIngredients = responses.ingredients
         let foodStatus = responses.status
+        let foodId = responses.id
         guard let foodImage = responses.image else { return  }
 //        guard let titleName = responses.name ?? responses.ingredients else {
 //            return
@@ -106,7 +105,7 @@ extension CollectionViewTableViewCell:  UICollectionViewDelegate, UICollectionVi
                 guard let strongSelf = self else {
                     return
                 }
-                let viewModel = TitlePreviewViewModel(name: foodName, ingredients: foodIngredients, status: foodStatus, image: foodImage)
+                let viewModel = TitlePreviewViewModel(id: foodId, name: foodName, ingredients: foodIngredients, status: foodStatus, image: foodImage)
                 self?.delegate?.CollectionViewTableViewCellDidTapCell(_cell: strongSelf, viewModel: viewModel)
             case .failure(let error):
                 print(error.localizedDescription)
@@ -115,7 +114,6 @@ extension CollectionViewTableViewCell:  UICollectionViewDelegate, UICollectionVi
 
         
     }
-    
-    
+        
 
 }
