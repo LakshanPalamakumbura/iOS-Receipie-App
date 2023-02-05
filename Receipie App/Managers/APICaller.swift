@@ -113,7 +113,6 @@ class APICaller {
              do {
                  let results = try JSONDecoder().decode([FavouriteResponse].self, from: data)
                  completion(.success(results))
-//                 print(results)
                                 
              }catch{
                  completion(.failure(error))

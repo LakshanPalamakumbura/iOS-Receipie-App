@@ -22,6 +22,9 @@ class DownloadsViewController: UIViewController {
         super.viewDidLoad()
         self.title = "save"
         view.backgroundColor = .systemRed
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         view.addSubview(upcomingTable)
         upcomingTable.delegate = self
         upcomingTable.dataSource = self
