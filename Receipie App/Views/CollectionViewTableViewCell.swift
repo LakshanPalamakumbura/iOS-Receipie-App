@@ -96,9 +96,6 @@ extension CollectionViewTableViewCell:  UICollectionViewDelegate, UICollectionVi
         let foodStatus = responses.status
         let foodId = responses.id
         guard let foodImage = responses.image else { return  }
-//        guard let titleName = responses.name ?? responses.ingredients else {
-//            return
-//        }
         APICaller.shared.getDetail { [weak self] result in
             switch result {
             case .success(let response):

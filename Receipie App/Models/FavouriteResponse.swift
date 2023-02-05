@@ -34,4 +34,3 @@ struct Food: Codable {
     }
 }
 
-//typealias Empty = [Element]

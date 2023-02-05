@@ -16,8 +16,6 @@ enum Sections: Int {
 
 class HomeViewController: UIViewController {    
     
-//    static let identifier = "HomeViewController"
-    
     let sectionTitles: [String] = ["breakfast", "Main Dish", "Dessert"]
     
     private let homeFeedTable: UITableView = {
@@ -142,19 +140,12 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         default:
             return UITableViewCell()
         }
-               
-        
-        
-        
-        
-        //OVER IT TRY
-        return cell
-        
         
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 //        cell.textLabel?.text = "hello world"
 //        cell.backgroundColor = .red
-//        return cell
+        return cell
+        
     }
     
     

@@ -4,9 +4,6 @@
 //
 //  Created by Lakshan Palamakumbura on 2023-01-27.
 //
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
 
  import Foundation
 
@@ -18,23 +15,15 @@
      let image: String?
      let created_at, updated_at: String?
 
-//     enum CodingKeys: String, CodingKey {
-//         case id, name, ingredients, status, type, image
-//         case createdAt = "created_at"
-//         case updatedAt = "updated_at"
-//     }
  }
-
-// enum AtedAt: String, Codable {
-//     case the20230126T172142000000Z = "2023-01-26T17:21:42.000000Z"
-// }
 
  enum TypeEnum: String, Codable {
      case breakfast = "Breakfast"
      case dessert = "Dessert"
      case mainDish = "Main Dish"
  }
-  
+
+
 /*
  {
  "created_at" = "2023-01-26T17:21:42.000000Z";
